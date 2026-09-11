@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Gift Guarant — Отзывы</title>
+
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #0b0d12;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 650px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            padding: 25px 0;
+        }
+
+        .logo {
+            width: 75px;
+            height: 75px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 23px;
+            font-size: 38px;
+            background: linear-gradient(135deg, #7c3aed, #ec4899);
+        }
+
+        h1 {
+            margin: 15px 0 5px;
+        }
+
+        .subtitle {
+            color: #888e9c;
+        }
+
+        .rating {
+            background: #151821;
+            border: 1px solid #242834;
+            border-radius: 22px;
+            text-align: center;
+            padding: 25px;
+            margin-bottom: 18px;
+        }
+
+        .rating-number {
+            font-size: 52px;
+            font-weight: bold;
+        }
+
+        .stars {
+            font-size: 25px;
+            margin: 5px;
+        }
+
+        .rating-text {
+            color: #858b99;
+        }
+
+        .review {
+            background: #151821;
+            border: 1px solid #242834;
+            border-radius: 18px;
+            padding: 18px;
+            margin-bottom: 12px;
+        }
+
+        .review-top {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .name {
+            font-weight: bold;
+        }
+
+        .date {
+            color: #707684;
+            font-size: 12px;
+        }
+
+        .small-stars {
+            margin-top: 8px;
+        }
+
+        .text {
+            color: #d5d8df;
+            line-height: 1.5;
+            margin-top: 8px;
+        }
+
+        .footer {
+            text-align: center;
+            color: #626875;
+            font-size: 12px;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <div class="logo">🎁</div>
+
+        <h1>Gift Guarant</h1>
+
+        <div class="subtitle">
+            Отзывы пользователей
+        </div>
+    </div>
+
+    <div class="rating">
+
+        <div class="rating-number">
+            4.7
+        </div>
+
+        <div class="stars">
+            ⭐⭐⭐⭐⭐
+        </div>
+
+        <div class="rating-text">
+            Средняя оценка
+        </div>
+
+    </div>
+
+    <div id="reviews"></div>
+
+    <div class="footer">
+        Gift Guarant
+    </div>
+
+</div>
+
+<script>
+
+const reviews = [
+
+    {
+        name: "Александр",
+        date: "Сегодня",
+        text: "Всё прошло быстро и удобно."
+    },
+
+    {
+        name: "Максим",
+        date: "Сегодня",
+        text: "Понравился сервис, всё понятно."
+    },
+
+    {
+        name: "Дмитрий",
+        date: "Вчера",
+        text: "Всё получилось без проблем."
+    },
+
+    {
+        name: "Артём",
+        date: "Вчера",
+        text: "Удобный интерфейс."
+    },
+
+    {
+        name: "Иван",
+        date: "2 дня назад",
+        text: "Всё отлично."
+    },
+
+    {
+        name: "Никита",
+        date: "3 дня назад",
+        text: "Быстро и удобно."
+    }
+
+];
+
+const container = document.getElementById("reviews");
+
+reviews.forEach(review => {
+
+    const item = document.createElement("div");
+
+    item.className = "review";
+
+    item.innerHTML = `
+
+        <div class="review-top">
+
+            <div class="name">
+                ${review.name}
+            </div>
+
+            <div class="date">
+                ${review.date}
+            </div>
+
+        </div>
+
+        <div class="small-stars">
+            ⭐⭐⭐⭐⭐
+        </div>
+<div class="text">
+            ${review.text}
+        </div>
+
+    `;
+
+    container.appendChild(item);
+
+});
+
+if (window.Telegram && window.Telegram.WebApp) {
+
+    Telegram.WebApp.ready();
+    Telegram.WebApp.expand();
+
+}
+
+</script>
+
+</body>
+</html>
